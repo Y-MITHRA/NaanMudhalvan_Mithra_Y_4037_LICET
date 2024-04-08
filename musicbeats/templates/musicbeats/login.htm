@@ -1,0 +1,65 @@
+{% extends 'musicbeats/basic.htm'%}
+{% block title%}Login{% endblock %}
+{% block body %}   
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="card shadow-lg p-4">
+                  <div class="image-container d-flex justify-content-center align-items-center">
+                    <img src="/static/musicbeats/login_logo.jpg" class="img-fluid" alt="Google Logo">
+                  </div>
+                    <h2 class="text-center mb-4">Signin</h2>
+                    
+                    <form action="/musicbeats/login" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Username</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                             name="username" placeholder="Your Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+       body{
+       color:  #1F4547; 
+       background-color: #d9fafc;
+   }
+        .card {
+            border-radius: 15px;
+        }
+        .col {
+          width: 480px;
+        }
+        .btn-primary {
+            background-color: #1F4547;
+            border-color: #1F4547;
+        }
+        .btn-primary:hover {
+            background-color: #1F4547;
+            border-color: #1F4547;
+        } 
+        .container {
+            height: 90.18vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .img-fluid {
+            max-width: 100px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+{% endblock %}

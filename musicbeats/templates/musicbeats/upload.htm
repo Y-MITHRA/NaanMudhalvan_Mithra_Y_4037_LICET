@@ -1,0 +1,119 @@
+{% extends 'musicbeats/basic.htm'%}
+{% block title%}Login{% endblock %}
+
+{% block body %}
+
+<style>
+  body {
+    color: #1F4547;
+    background-color: #d9fafc;
+    }
+
+  h2 {
+    text-align: center;
+    padding-top: 2%;
+    color: #1F4547;
+  }
+
+  
+  .container {
+    border: 2px solid #1F4547;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #446a6f;
+  }
+
+  .form-group label {
+    color: white;
+    font-weight: bold;
+  }
+
+  .btn-primary {
+    background-color: #1F4547;
+    border-color: #1F4547;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary:hover {
+    background-color: #0d2c2e;
+  }
+
+  .form-control {
+    border-color: #1F4547;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-control:focus {
+    border-color: #0d2c2e;
+    box-shadow: 0 0 0 0.2rem rgba(31, 69, 71, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: 'Select File';
+    display: inline-block;
+    background: #1F4547;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .custom-file-input:hover::before {
+    background: #0d2c2e;
+  }
+  
+
+</style>
+
+<h2>Upload Your Music</h2>
+
+<div class="container my-3">
+  
+  <form action="/musicbeats/upload" enctype="multipart/form-data" method="POST">{% csrf_token %}
+    <div class="form-group">
+      <label for="musicName">Your Music Name</label>
+      <input type="text" class="form-control" id="musicName" aria-describedby="emailHelp" name="name" placeholder="Your Song Name">
+    </div>
+
+    <div class="form-group">
+      <label for="singerName">Singer Name</label>
+      <input type="text" class="form-control" id="singerName" aria-describedby="emailHelp" name="singer" placeholder="Singer Name">
+    </div>
+
+    <div class="form-group">
+      <label for="tags">Tags:</label>
+      <input type="text" class="form-control" id="tags" aria-describedby="emailHelp" name="tag" placeholder="Tags (Separate By Commas)">
+    </div>
+
+    <div class="form-group">
+      <label for="imageLink">Image Link (Associated With Your Music)</label>
+      <input type="text" class="form-control" id="imageLink" aria-describedby="emailHelp" name="image" placeholder="Link to Image">
+    </div>
+
+    <div class="form-group">
+      <label for="movieName">Movie Name</label>
+      <input type="text" class="form-control" id="movieName" placeholder="Movie name in which this song is there" name="movie">
+    </div>
+
+    <div class="form-group">
+      <label for="credit">Credit</label>
+      <input type="text" class="form-control" id="credit" placeholder="Add Video Link" name="credit">
+    </div>
+
+    <div class="form-group">
+      <label for="fileInput" class="custom-file-input">Choose File</label>
+      <input type="file" class="form-control-file" id="fileInput" name="file">
+    </div>
+
+    <div style="padding-top: 3%; padding-bottom: 3%;">
+      <button type="submit" class="btn btn-primary">Upload</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

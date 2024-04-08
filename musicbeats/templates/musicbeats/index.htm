@@ -1,0 +1,108 @@
+{% extends 'musicbeats/basic.htm' %}
+{% block title %}MusicBeats{% endblock %}
+
+{% block body %}
+{% load static %} 
+<style>
+  body{
+       color:  #1F4547; 
+       background-color: #d9fafc;
+   }
+    .btn-outline {
+        color: #1F4547;
+        border-color: #1F4547;
+    }
+    .btn-outline:hover {
+        background-color: #1F4547;
+        color: white;
+    }
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+    }
+    footer {
+        background-color: #333; /* Light black color */
+        padding: 20px 8%;
+        font-family: 'Verdana';
+        color: #fff; /* White text color */
+        font-weight: bold;
+    }
+</style>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/static/musicbeats/dash.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="/static/musicbeats/dash2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="/static/musicbeats/dash3.jpg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+</div>
+<h2 style="padding-left: 8%; padding-top: 2%; font-family: 'Verdana';color:#1F4547;font-weight: bolder;">Trending Songs</h2>
+
+<div class="row" style="padding-top: 2%; padding-left: 7%;">
+    {% for i in song %}
+    <div style="padding-left: 2%; padding-top: 1%;">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ i.image }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.name }}</h5>
+                <p class="card-text" style="color: rgb(44, 33, 166);">Tags: {{ i.tags }}</p>
+                <p class="card-text" style="color: rgb(44, 33, 166);">Movie: {{ i.movie }}</p>
+                <a href="/musicbeats/songs/{{ i.song_id }}" class="btn btn-outline">Listen Song</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<hr>
+
+<h3 style="padding-left: 8%; padding-top: 2%; font-family: 'Verdana';color:#1F4547;font-weight: bolder;">Listen Later</h3>
+
+<div class="row" style="padding-top: 2%; padding-left: 7%;">
+    {% for i in watch reversed %}
+    <div style="padding-left: 2%; padding-top: 1%;">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ i.image }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.name }}</h5>
+                <p class="card-text" style="color:rgb(44, 33, 166);">Tags: {{ i.tags }}</p>
+                <p class="card-text" style="color: rgb(44, 33, 166);">Movie: {{ i.movie }}</p>
+                <a href="/musicbeats/songs/{{ i.song_id }}" class="btn btn-outline">Listen Song</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<hr>
+
+<footer>
+    <div class="footer-content">
+        <div style="text-align: left;">
+            <h3 style="font-weight: bolder;"></h3>About Us</h3>
+            <br>
+        <p> MusicApp is a platform where you can upload, manage,and</p>
+        <p> listen to your favorite music. With MyChannel feature, </p>
+        <p> you can organize your uploaded music and access it anytime,</p>
+        <p> anywhere.Additionally, you can save songs to watch later and</p>
+        <p> keep track of your music listening history.</p>
+        
+        <br>
+        <p>Contact us for any inquiries or feedback.</p>
+        </div>
+
+        <div style="text-align: right;">
+            <a href="https://www.instagram.com/your_instagram" target="_blank" style="color: #fff;">Instagram</a> |
+            <a href="https://twitter.com/your_twitter" target="_blank" style="color: #fff;">Twitter</a> |
+            <a href="https://www.facebook.com/your_facebook" target="_blank" style="color: #fff;">Facebook</a> |
+            <a href="https://www.youtube.com/your_youtube" target="_blank" style="color: #fff;">YouTube</a> |
+            
+        </div>
+    </div>
+</footer>
+
+{% endblock %}
